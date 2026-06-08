@@ -3,8 +3,14 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME=""
 
+# START: pure theme
+
+fpath+=("$(npm root -g)/pure-prompt")
+
 autoload -U promptinit; promptinit
 prompt pure
+
+# END: pure theme
 
 plugins=(git zsh-fzf-history-search)
 

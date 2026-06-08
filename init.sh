@@ -41,8 +41,6 @@ if [[ ! -d ~/.oh-my-zsh ]]; then
 	ln -s $(pwd)/zsh/.zshrc ~/.zshrc
 fi
 
-
-
 zshFzfDir=${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-fzf-history-search
 if [[ ! -d "$zshFzfDir" ]]; then
 	echo "Install zsh-fzf-history-search"
