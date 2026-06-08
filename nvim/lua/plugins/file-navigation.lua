@@ -15,6 +15,7 @@ return {
 
       vim.keymap.set('n', '-', function()
         fyler.open {
+          kind = 'float',
           dir = Snacks.git.get_root(),
         }
       end)
