@@ -15,6 +15,12 @@ if [[ ! -d ~/.config/nvim ]]; then
 fi
 
 
+if ! command -v rg &> /dev/null; then
+		echo "Install ripgrep"
+		brew install ripgrep
+fi
+
+
 ## Ghostty
 
 if [[ ! -d "~/.config/ghostty" ]]; then
