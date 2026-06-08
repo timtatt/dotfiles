@@ -19,7 +19,7 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
 -- Alternate File
-vim.keymap.set('n', '<C-E>', ':e#<CR>', { desc = 'Go to alternate file' })
+vim.keymap.set('n', '<M-E>', ':e#<CR>', { desc = 'Go to alternate file' })
 
 -- QuickFix
 vim.keymap.set('n', ']q', ':cnext<CR>', { desc = 'Next item in QuickFix list' })

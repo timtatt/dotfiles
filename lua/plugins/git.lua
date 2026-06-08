@@ -41,23 +41,6 @@ return {
           vim.keymap.set(mode, l, r, opts)
         end
 
-        -- Navigation
-        map('n', ']c', function()
-          if vim.wo.diff then
-            vim.cmd.normal { ']c', bang = true }
-          else
-            gitsigns.nav_hunk 'next'
-          end
-        end)
-
-        map('n', '[c', function()
-          if vim.wo.diff then
-            vim.cmd.normal { '[c', bang = true }
-          else
-            gitsigns.nav_hunk 'prev'
-          end
-        end)
-
         -- Actions
         map('n', '<leader>hs', gitsigns.stage_hunk)
         map('n', '<leader>hr', gitsigns.reset_hunk)
@@ -71,6 +54,12 @@ return {
         map('n', '<leader>hu', gitsigns.undo_stage_hunk)
         map('n', '<leader>hR', gitsigns.reset_buffer)
         map('n', '<leader>hp', gitsigns.preview_hunk)
+        map('n', '[h', function()
+          gitsigns.nav_hunk 'next'
+        end)
+        map('n', '[h', function()
+          gitsigns.nav_hunk 'prev'
+        end)
         map('n', '<leader>hb', function()
           gitsigns.blame_line { full = true }
         end)

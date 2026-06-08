@@ -12,6 +12,7 @@ return {
           javascript = { 'prettier', stop_after_first = true },
           typescript = { 'prettier' },
           typescriptreact = { 'prettier' },
+          markdown = { 'prettier' },
           json = { 'prettier' },
           svg = { 'prettier' },
           go = { 'gofmt', 'goimports' },
