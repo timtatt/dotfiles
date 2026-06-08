@@ -9,6 +9,20 @@ if ! command -v nvim &> /dev/null; then
 		brew install neovim
 fi
 
+if [[ ! -d ~/.config/nvim ]]; then
+		echo "Adding NVIM symlink"
+		ln -s $(pwd)/nvim ~/.config/nvim
+fi
+
+
+## Ghostty
+
+if [[ ! -d "~/.config/ghostty" ]]; then
+	echo "Creating Ghostty symlink"
+	mkdir -p ~/.config/ghostty
+	ln -s $(pwd)/ghostty/config ~/.config/ghostty/config.ghostty
+fi
+
 
 ## Python
 
@@ -64,12 +78,6 @@ if [[ ! -d ~/.config ]]; then
 		echo "Creating .config dir"
 		mkdir ~/.config
 fi
-
-if [[ ! -d ~/.config/nvim ]]; then
-		echo "Adding NVIM symlink"
-		ln -s $(pwd)/nvim ~/.config/nvim
-fi
-
 
 
 
