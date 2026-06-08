@@ -39,6 +39,7 @@ return {
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
       require('mason').setup()
 
+      vim.lsp.enable 'tsgo'
       vim.lsp.enable 'gopls'
       vim.lsp.enable 'html'
       vim.lsp.enable 'cssls'
