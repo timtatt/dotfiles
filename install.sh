@@ -23,7 +23,7 @@ fi
 
 ## Ghostty
 
-if [[ ! -d "~/.config/ghostty" ]]; then
+if [[ ! -d ~/.config/ghostty ]]; then
 	echo "Creating Ghostty symlink"
 	mkdir -p ~/.config/ghostty
 	ln -s $(pwd)/ghostty/config ~/.config/ghostty/config.ghostty
@@ -85,8 +85,11 @@ if [[ ! -d ~/.config ]]; then
 		mkdir ~/.config
 fi
 
+# Taskfile
 
-
-
+if ! command -v task &> /dev/null; then
+		echo "Install Task"
+		brew install go-task/tap/go-task
+fi
 
 echo "Finished installing shit"
