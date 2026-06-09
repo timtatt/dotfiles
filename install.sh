@@ -113,4 +113,22 @@ if [[ ! -f ~/.tmux.conf ]]; then
 fi
 
 
+if [[ ! -d ~/.config/tmux-sessionizer ]]; then
+	echo "Adding tmux-sessionizer config"
+	mkdir ~/.config/tmux-sessionizer
+	ln -s $(pwd)/tmux/tmux-sessionizer.conf ~/.config/tmux-sessionizer/tmux-sessionizer.conf
+fi
+
+# local bin symlink
+if [[ ! -d ~/.local/bin ]]; then
+	echo "Adding .local/bin"
+	mkdir -p ~/.local/bin
+fi
+
+if [[ ! -f ~/.local/bin/tmux-sessionizer ]]; then
+	echo "Adding .local/bin/tmux-sessionizer"
+	ln -s $(pwd)/bin/tmux-sessionizer ~/.local/bin/tmux-sessionizer
+fi
+
+
 echo "Finished installing shit"

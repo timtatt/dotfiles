@@ -174,7 +174,7 @@ return {
       '<C-s>',
       function()
         Snacks.lazygit.open {
-          cwd = Snacks.git.get_root(),
+          cwd = require('helpers').get_git_root(),
         }
       end,
       desc = 'Lazygit',

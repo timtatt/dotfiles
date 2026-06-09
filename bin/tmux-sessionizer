@@ -68,10 +68,12 @@ while [[ "$#" -gt 0 ]]; do
     -h | --help)
         echo "Usage: tmux-sessionizer [OPTIONS] [SEARCH_PATH]"
         echo "Options:"
-        echo "  -h, --help             Display this help message"
-        echo "  -s, --session <name>   session command index."
-        echo "  --vsplit               Create vertical split (horizontal layout) for session command"
-        echo "  --hsplit               Create horizontal split (vertical layout) for session command"
+        echo "  -h, --help                            Display this help message"
+        echo "  -s, --session <name>                  session command index."
+        echo "  -t, --tab <tab-num>                   go to tmux-sessionizer tab."
+        echo "  --set-tab <tab-num> <session-name>    set session-name for tab."
+        echo "  --vsplit                              Create vertical split (horizontal layout) for session command"
+        echo "  --hsplit                              Create horizontal split (vertical layout) for session command"
         exit 0
         ;;
     -s | --session)
@@ -92,6 +94,26 @@ while [[ "$#" -gt 0 ]]; do
         fi
 
         session_cmd="${TS_SESSION_COMMANDS[$session_idx]}"
+
+        shift
+        ;;
+    --set-tab)
+        # sets the client to be used for this tab 
+
+        mkdir -p "$PANE_CACHE_DIR"
+        echo "$3" > "$PANE_CACHE_DIR/tab-$2"
+        exit 0
+        ;;
+    -t | --tab)
+        # selects
+        selected_tab=$(cat "$PANE_CACHE_DIR/tab-$2" 2>/dev/null)
+
+        if [[ -z "$selected_tab" ]]; then
+            echo "Error: No client set for tab $2"
+            exit 1
+        fi
+        
+        user_selected="$selected_tab"
 
         shift
         ;;
@@ -223,12 +245,12 @@ fi
 # utility function to find directories
 find_dirs() {
     # list TMUX sessions
-    if [[ -n "${TMUX}" ]]; then
-        current_session=$(tmux display-message -p '#S')
-        tmux list-sessions -F "[TMUX] #{session_name}" 2>/dev/null | grep -vFx "[TMUX] $current_session"
-    else
-        tmux list-sessions -F "[TMUX] #{session_name}" 2>/dev/null
-    fi
+    # if [[ -n "${TMUX}" ]]; then
+    #     current_session=$(tmux display-message -p '#S')
+    #     tmux list-sessions -F "[TMUX] #{session_name}" 2>/dev/null | grep -vFx "[TMUX] $current_session"
+    # else
+    #     tmux list-sessions -F "[TMUX] #{session_name}" 2>/dev/null
+    # fi
 
     # note: TS_SEARCH_PATHS is an array of paths to search for directories
     # if the path ends with :number, it will search for directories with a max depth of number ;)
