@@ -92,4 +92,25 @@ if ! command -v task &> /dev/null; then
 		brew install go-task/tap/go-task
 fi
 
+# fzf
+
+if ! command -v fzf &> /dev/null; then
+		echo "Install fzf"
+		brew install fzf
+fi
+
+
+# tmux
+
+if ! command -v tmux &> /dev/null; then
+		echo "Install tmux"
+		brew install tmux
+fi
+
+if [[ ! -f ~/.tmux.conf ]]; then
+	echo "Create tmux conf symlink"
+	ln -s $(pwd)/tmux/.tmux.conf ~/.tmux.conf
+fi
+
+
 echo "Finished installing shit"
