@@ -1,3 +1,5 @@
 [user]
 	email = tim@tattsy.com
 	name = Tim Tattersall
+[alias]
+	co = checkout
