@@ -28,7 +28,7 @@ export JAVA_HOME=$JAVA_HOME_17
 export BUN_INSTALL="$HOME/.bun"
 
 # PATH
-export PATH="$PATH:$BUN_INSTALL/bin"
+export PATH="$PATH:$BUN_INSTALL/bin:/usr/local/go/bin"
 
 alias lg='lazygit'
 alias oc='opencode'
