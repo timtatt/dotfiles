@@ -97,11 +97,20 @@ while [[ "$#" -gt 0 ]]; do
 
         shift
         ;;
+    --print-tabs)
+        echo "Selected Tabs"
+        for f in $PANE_CACHE_DIR/tab-*; do
+            echo "$(basename "$f"): $(cat "$f")"
+        done
+        exit 0
+        ;;
     --set-tab)
         # sets the client to be used for this tab 
 
         mkdir -p "$PANE_CACHE_DIR"
         echo "$3" > "$PANE_CACHE_DIR/tab-$2"
+
+        echo "Set Sessionizer Tab $2: $3"
         exit 0
         ;;
     -t | --tab)
